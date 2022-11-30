@@ -17,20 +17,20 @@
         //2
         console.log((a+b+c)/3)
 
-
         //3
-
-        for (var i = 0; i < 101; i++){
-            console.log(i);
+        
+        for (var i = 0; i <=100; i++){
+            console.log(i)
         }
 
         //4
 
-        for(var c=1; c<100; c++) {
-            if(c%2==0){
-                console.log(c)
+        for (var i = 1; i <= 100; i++){
+            if (i%2==0){
+                console.log(i);
             }
         }
+
 
         //5
 
@@ -60,11 +60,9 @@
             
             
         }
-        
 
         //7
 
-        
         var string = "";
 
         for(var i = 0; i < 5; i++) {
@@ -76,8 +74,75 @@
 }
             console.log(string);
 
+        //8
 
+        var string = "";
+        for (let i = 0; i < 5; i++) {
+            for (let k = 0; k < 5 - i; k++) {
+                string += "*";
+                }
+        string += "\n";
+        }
+        console.log(string);
+        
 
+        //9
+        function check(x){
+
+            return(Math.log2(x) % 1 === 0)
+        }
+        console.log(check(12))
+        
+
+        //10
+
+        // function y(x){
+        //     var arr = []
+        //     while (x  != 0){
+        //         arr.push(x%10)
+        //         x = Math.floor(x / 10)
+        //     }
+        //     console.log(arr.reverse())
+        // }
+
+        // y(1432)
+
+        var x = 77365
+        var x_to_str = String(x)
+        var digits = x_to_str.length
+        console.log(digits)
+
+        //11
+
+        var array = [1, 2, 3, 'salam', 'hello']
+
+        for(var i = 0; i < array.length; i++) {
+            if(typeof(array[i])=='number'){
+                console.log('eded var')
+            }
+        }
+
+        //12
+
+        var array = [1, 2, 3,6, 34, 21, 58]
+        var max_num = array[0]
+        for (var i = 0; i < array.length; i++) {
+            if(array[i]>max_num)
+            max_num = array[i]
+        }
+        console.log(max_num)
+
+        //13
+
+        var a = 4; var b = 5; 
+        var x = 2; var y = 1; var z = 1;
+        
+        if((x>a && y>a) || (y>b && z>b)){
+            console.log(false)
+        } else{
+            console.log(true)
+        }
+        
 
 
     </script>
