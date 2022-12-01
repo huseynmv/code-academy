@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //1
+
+        function nSquare(...args){
+            let total = 0
+            for (let i = 0; i < args.length; i++) {
+                
+                total += args[i] * args[i]
+
+            }
+
+            console.log(total)
+        }
+
+        nSquare(4,4,5,10)
+
+        //2
+
+        function nAverage(...args){
+
+            let total = 0
+            for (let i = 0; i < args.length; i++){
+
+                total += args[i]
+
+            }
+            average = total / args.length
+            console.log(average)
+
+        }
+
+        nAverage(10,15,25)
+
+        //3
+
+        function divident(n, m, x){
+            
+            let count = 0 
+            for (let i = n; i < m; i++) {
+
+                if (i % x == 0)
+                    count+=1
+            }
+            console.log(count)
+
+        }
+
+        divident(1,10,2)
+
+        //4
+
+        //5
+
+        function CustomReplace(text, a, b){
+            
+        }
+
+
+    </script>
+</body>
+</html>
