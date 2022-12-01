@@ -59,12 +59,45 @@
 
         //4
 
+        // function xyz(n, m) {
+        //     let total = 0
+
+        //     for (let i = n; i < m; i++) {
+                
+                
+        //     }
+
+        // }
+
+            function xyz(n, m) {
+                let arr = []
+                for (let i = n; i < m; i++) {
+                    let flag = true;
+                    
+                    for (let k = 2; k < i; k++) {
+                        if (i % k == 0) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag == true) {
+                        arr.push(i);
+                    }
+                }
+                console.log(arr.length);
+
+            }
+
+            xyz(2, 15)
+
         //5
 
-        function CustomReplace(text, a, b){
-            
-        }
 
+        function replace(text, a, b) {
+                return text.split(a).join(b);
+            }
+
+        console.log(replace('salam', 'a', 'b'));
 
     </script>
 </body>
