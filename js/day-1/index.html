@@ -129,6 +129,7 @@
         for (var i = 0; i < array.length; i++) {
             if(array[i]>max_num)
             max_num = array[i]
+            
         }
         console.log(max_num)
 
@@ -142,7 +143,19 @@
         } else{
             console.log(true)
         }
-        
+
+        //14
+
+        let name = 'cagatay yildiz' 
+        let name_2= 'revan zeKarYali'
+
+        let ad = name[0].toUpperCase() + name.substr(1, name.indexOf(' ')) + name[name.indexOf(' ')+1].toUpperCase() + name.substr(name.indexOf(' ')+2)
+        console.log(ad)
+
+        let ad_2 = name_2.toLowerCase()
+
+        let namee = ad_2[0].toUpperCase() + ad_2.substr(1, ad_2.indexOf(' ')) + ad_2[ad_2.indexOf(' ') + 1].toUpperCase() + ad_2.substr(ad_2.indexOf(' ') + 2)
+        console.log(namee)
 
 
     </script>
