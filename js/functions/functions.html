@@ -99,6 +99,32 @@
 
         console.log(replace('salam', 'a', 'b'));
 
+
+        // 6
+        
+        text = 'alma armud nar goyerti'
+        function CustomSubstr(text, start, end=0){
+
+            let result = ''
+
+            if (start > end) {
+                var x = start
+                start = end
+                end = x
+            }
+            
+            for (var i = start; i < end; i++) {
+
+                result += text[i]
+                
+            
+        }
+        console.log(result);
+
+    }
+
+        CustomSubstr(text, 8,5)
+
     </script>
 </body>
 </html>
