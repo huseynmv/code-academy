@@ -34,14 +34,23 @@
         }
 
         function AddPost(){
+
+            new_id = Math.floor(Math.random() * 5);
+            posts.includes(function(x){
+                if (new_id == x.id){
+                    console.log('idler eynidi')
+                    new_id = Math.floor(Math.random() * 5)
+                }
+            })
             let post = {
-                id: Math.floor(Math.random() * 100),
+                id: Math.floor(Math.random() * 10),
                 title: title,
                 content: content,
             }
 
             posts.push(post)
             return posts
+
         }
 
     

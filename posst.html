@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onchange="GetTitle(this)" placeholder="Add title">
+    <br><br>
+    <input type="text" onchange="GetContent(this)" placeholder="Add description">
+    <br> <br>
+    <button onclick="AddPost()">Send</button>
+    <br><br><br>
+    <input type="text" onchange='GetID(this)' placeholder="Write id to delete post">
+    <br><br>
+    <button onclick="DeletePost()" >Delete</button>
+
+    <br><br><br>
+    <input type="text" onchange="GetCommentID(this)" placeholder="Id">
+    <br><br>
+    <input type="text" onchange="GetComment(this)" placeholder='Comment'>
+    <br><br>
+    <button onclick="AddComment()">Add comment</button>
+
+    <script>
+
+        var title = ''
+        var content = ''
+        var id = ''
+        var comment = ''
+        var posts = [{
+            id: 1,
+            title: 'Title for test',
+            content: 'Content for test',
+            comment: 'Comment for test'
+
+        }]
+
+        function GetTitle(element){
+            title = element.value  
+            return title
+        }
+
+        function GetContent(element){
+            content = element.value
+            return content
+        }
+
+        function AddPost(){
+            let post = {
+                id: posts[posts.length - 1].id + 1,
+                title: title,
+                content: content,
+                comment: ''
+            }
+            posts.push(post)
+            return posts
+        }
+
+
+        function GetID(element){
+            ids = element.value
+            return ids
+        }
+
+        function DeletePost(){
+            // for(i=0; i>=posts.length; i++){
+            //     if(posts[i].id == ids){
+            //         posts.splice(i, 1)
+            //     } else{
+            //         alert('ID tapilmadi')
+            //     }
+            // }
+            posts.map(function(elem){
+                if(elem.id == ids){
+                    posts.splice(elem,1)
+                    return posts
+                }
+            })
+            return posts
+        }
+
+        function GetComment(element) {
+            
+            comm = element.value
+            return comm
+
+        }
+
+        function GetCommentID(element){
+            c_id = element.value
+            return c_id
+        }
+
+        // function AddComment(){
+        //     posts.map(function(elem){
+        //         if(elem.id == ids){
+        //             elem.comment = comm
+        //             return comm
+        //     }else{alert('ID sehvdir')}
+        // })
+            function AddComment(){
+                posts.map(function(elem){
+
+                    if(elem.id == c_id){
+                        elem.comment = comm
+                    }
+                    return comm;
+                })
+            }
+
+
+
+    </script>
+
+</body>
+</html>
