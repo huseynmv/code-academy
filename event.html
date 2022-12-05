@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onchange="GetTitle(this)" placeholder="Title ...">
+    <br>
+    <input type="text" onchange="GetContent(this)" placeholder="Content ...">
+    <br>
+    <button onclick="AddPost()" ><h4>Send</h4></button>
+    <script>
+
+
+        let title = ''
+        let content = ''
+        let posts = [{
+            id: 1,
+            title: "Huseyn",
+            content: "Memmedov",
+        }]
+
+        function GetTitle(element){
+            title = element.value
+            return title;
+        }
+
+        function GetContent(element) {
+                content = element.value
+                return content;
+        }
+
+        function AddPost(){
+            let post = {
+                id: Math.floor(Math.random() * 100),
+                title: title,
+                content: content,
+            }
+
+            posts.push(post)
+            return posts
+        }
+
+    
+
+
+    </script>
+</body>
+</html>
