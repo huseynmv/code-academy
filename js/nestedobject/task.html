@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./task.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        console.log(orders.filter(q => q.freight <= 1)); //1
+
+
+        let count = 0
+        orders.forEach(elem => {
+            if (elem.customerId == 'WARTH')
+                count++
+        })
+        console.log(count); //2
+
+
+        // let top_customer = []
+        // let amount = 0
+        // orders.forEach(item => {
+        //     customer = item.customerId;
+        //     amount = amount + ((item.details.unitPrice * item.details.quantity) * (1-item.details.discount))
+        //     console.log(amount);
+            
+        // })
+
+        function TotalOrderAmount(){
+            let total = []
+            orders.forEach(function(x){
+                x.details.forEach(item => {
+                    total_order_amount = (item.unitPrice * item.quantity) * (1 - item.discount)
+                    
+                })
+
+                total.push(total_order_amount)
+
+            })
+            console.log(total);
+        }
+
+        TotalOrderAmount() // 5
+
+
+        function MaxDiscount(){
+            max_discount = []
+            orders.forEach(elem => {
+                elem.details.forEach(function(x){
+                    max_discount.push(x.discount)
+                })
+            })
+            console.log(max_discount.sort()); 
+        }
+        MaxDiscount() // 6
+
+
+
+        let productSalesCount = [];
+
+            orders.forEach(element => {
+
+                element.details.forEach(item => {
+                    let product = productSalesCount.find(q => q.productId == item.productId);
+
+                    if (product != undefined) {
+                        product.quantity = product.quantity + item.quantity
+                    }
+                    else {
+                        let newProduct = {
+                            productId: item.productId,
+                            quantity: item.quantity
+                        }
+                        productSalesCount.push(newProduct);
+                    }
+                })
+
+            }) //7
+
+
+        
+
+
+    </script>
+
+</body>
+</html>
