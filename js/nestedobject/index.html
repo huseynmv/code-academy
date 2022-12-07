@@ -133,31 +133,31 @@
 
     //En çok hangi ülkeye satış yaptım VE ne kadar?
 
-    let countrySales = [];
+    // let countrySales = [];
 
-    orders.forEach(element => {
+    // orders.forEach(element => {
 
-        let countryData = countrySales.find(q => q.name == element.shipAddress.country);
+    //     let countryData = countrySales.find(q => q.name == element.shipAddress.country);
 
-        if (countryData != undefined) {
-            countryData.totalAmount = countryData.totalAmount + element.totalCart;
-        }
-        else {
-            let newCountry = {
-                name: element.shipAddress.country,
-                totalAmount: element.totalCart
-            }
-            countrySales.push(newCountry);
-        }
+    //     if (countryData != undefined) {
+    //         countryData.totalAmount = countryData.totalAmount + element.totalCart;
+    //     }
+    //     else {
+    //         let newCountry = {
+    //             name: element.shipAddress.country,
+    //             totalAmount: element.totalCart
+    //         }
+    //         countrySales.push(newCountry);
+    //     }
 
-    });
+    // });
 
 
-    let sortedCountry = countrySales.sort(function (a, b) {
-        return b.totalAmount - a.totalAmount
-    })
+    // let sortedCountry = countrySales.sort(function (a, b) {
+    //     return b.totalAmount - a.totalAmount
+    // })
 
-    document.getElementById('topCountry').innerHTML = sortedCountry[0].name + " " +  sortedCountry[0].totalAmount.toFixed(2);
+    // document.getElementById('topCountry').innerHTML = sortedCountry[0].name + " " +  sortedCountry[0].totalAmount.toFixed(2);
 
 
 
@@ -167,26 +167,88 @@
 
     //Ürün satış adet miktar
 
-    let productSalesCount = [];
+    // let productSalesCount = [];
 
-    orders.forEach(element => {
+    // orders.forEach(element => {
 
-        element.details.forEach(item => {
-            let product = productSalesCount.find(q => q.productId == item.productId);
+    //     element.details.forEach(item => {
+    //         let product = productSalesCount.find(q => q.productId == item.productId);
 
-            if(product != undefined){
-                product.quantity = product.quantity + item.quantity
+    //         if(product != undefined){
+    //             product.quantity = product.quantity + item.quantity
+    //         }
+    //         else{
+    //             let newProduct = {
+    //                 productId : item.productId,
+    //                 quantity : item.quantity
+    //             }
+    //             productSalesCount.push(newProduct);
+    //         }
+    //     })
+
+    // })
+
+
+
+    //  let countrySales = [];
+
+    //     orders.forEach(element => {
+
+    //         let countryData = countrySales.find(q => q.name == element.shipAddress.country);
+
+    //         if (countryData != undefined) {
+    //             countryData.totalAmount = countryData.totalAmount + element.totalCart;
+    //         }
+    //         else {
+    //             let newCountry = {
+    //                 name: element.shipAddress.country,
+    //                 totalAmount: element.totalCart
+    //             }
+    //             countrySales.push(newCountry);
+    //         }
+
+    //     });
+
+
+
+    //1) freight 1 den küçük olan siparişleri console a yazdır
+    //2) customerID WARTH olan kaç adet sipariş var?
+    //3) En kıymetli müşterim
+    //4) En kıymetli çalışanım
+
+
+    console.log(orders.filter(q => q.freight < 1)); //1
+
+    let count = 0
+
+    orders.forEach(elem =>{
+        if(elem.customerId == 'WARTH')
+        count++
+    })
+    console.log(count); //2
+
+
+    let top_customer = []
+
+    orders.forEach(elem => {
+
+        let customerData = top_customer.find(q => q.name == orders.customerId);
+
+        if(customerData != undefined){
+            customerData.amount = customerData.amount + (elem.details.unitPrice * elem.detail.quantity) * 1-elem.details.discount
+        } else{
+            let new_customer = {
+                name : elem.customerId,
+                amount : (elem.details.unitPrice * elem.details.quantity) 
             }
-            else{
-                let newProduct = {
-                    productId : item.productId,
-                    quantity : item.quantity
-                }
-                productSalesCount.push(newProduct);
-            }
-        })
+            top_customer.push(new_customer)
+        }
 
     })
+
+    console.log(top_customer); //3
+
+
 
 
 </script>
