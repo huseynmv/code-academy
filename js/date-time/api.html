@@ -33,7 +33,7 @@
     data.data.forEach(element =>{
         Object.values(element.timings).forEach(item =>{
             
-            if(hours == item.substr(0,2) && minutes.diff(item.substr(3,5))==15){
+            if(hours == item.substr(0,2) && minutes.diff(item.substr(3,5), 'minutes')==15){
                 console.log('Imana gelin');
             }
         })
