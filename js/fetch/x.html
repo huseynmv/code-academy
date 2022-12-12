@@ -9,39 +9,61 @@
 <body>
     <script>
 
-        url = 'https://jsonplaceholder.typicode.com/'
+        // url = 'https://jsonplaceholder.typicode.com/'
 
-        function GetPosts(){
-            fetch(url + 'posts')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
+        // function GetPosts(){
+        //     fetch(url + 'posts')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // }
 
-        function GetPostByID(id){
-            fetch(url + `posts/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
+        // function GetPostByID(id){
+        //     fetch(url + `posts/${id}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // }
 
-        function GetPostComments(id){
-            fetch(url + `posts/${id}/comments`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
+        // function GetPostComments(id){
+        //     fetch(url + `posts/${id}/comments`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        // }
 
-        function Comments(id){
-            fetch(url + `comments?postId=${id}`)
-            .then(res => res.json())
-            .then(x => {
-                console.log(x);
+        // function Comments(id){
+        //     fetch(url + `comments?postId=${id}`)
+        //     .then(res => res.json())
+        //     .then(x => {
+        //         console.log(x);
+        //     })
+        // }
+
+
+    function AddCategory(name, description){
+            fetch("https://northwind.now.sh/api/categories",
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({
+
+                    description: description,
+                    name: name
+                })
             })
-        }
+            .then(res => res.json())
+            .then(d => {
+                console.log(d);
+            })
+    }
+        
+
 
     </script>
 </body>
