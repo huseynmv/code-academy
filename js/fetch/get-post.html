@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Get(){
+
+            // fetch multiple url at the same time
+
+            Promise.all(
+                [
+                    fetch('https://northwind.vercel.app/api/suppliers').then(res => res.json()).then(data => { console.log(data) }),
+                    fetch('https://northwind.vercel.app/api/orders').then(res => res.json()).then(data => { console.log(data) }),
+                ]
+            )
+        }
+
+
+        function AddSuppliers(companyName, contactName, contactTitle, street, city, region, postalCode, country, phone){
+            fetch('https://northwind.vercel.app/api/suppliers', 
+            {
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body : JSON.stringify({
+                    companyName: companyName,
+                    contactName: contactName,
+                    contactTitle: contactTitle,
+                    address: {
+                        street: street,
+                        city: city,
+                        region: region,
+                        postalCode: postalCode,
+                        country: country,
+                        phone: phone
+
+                    }
+                })
+
+            })
+            .then(res => res.json())
+            .then(data => {console.log(data);})
+        }
+
+
+        today = moment()
+
+        function AddOrder(customerId, employeeId, shipVia, freight, shipName, street, city, region, postalCode, country){
+            fetch('https://northwind.vercel.app/api/orders',
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+
+                body: JSON.stringify({
+                    customerId: customerId,
+                    employeeId: employeeId,
+                    orderDate : moment().format('DD-MM-YYYY HH:mm:ss'),
+                    requiredDate : new_date = moment(today, "DD-MM-YYYY").add(5, 'days').format('DD-MM-YYYY'),
+                    shipVia: shipVia,
+                    freight: freight,
+                    shipName: shipName,
+                    street: street,
+                    city: city,
+                    region: region,
+                    postalCode: postalCode,
+                    country: country
+                })
+            })
+            .then(res => res.json())
+            .then(data => {console.log(data)})
+
+        }
+
+    </script>
+</body>
+</html>
