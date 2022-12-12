@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        url = 'https://jsonplaceholder.typicode.com/'
+
+        function GetPosts(){
+            fetch(url + 'posts')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+
+        function GetPostByID(id){
+            fetch(url + `posts/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+
+        function GetPostComments(id){
+            fetch(url + `posts/${id}/comments`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+
+        function Comments(id){
+            fetch(url + `comments?postId=${id}`)
+            .then(res => res.json())
+            .then(x => {
+                console.log(x);
+            })
+        }
+
+    </script>
+</body>
+</html>
