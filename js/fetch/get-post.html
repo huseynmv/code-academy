@@ -54,7 +54,7 @@
 
         today = moment()
 
-        function AddOrder(customerId, employeeId, shipVia, freight, shipName, street, city, region, postalCode, country){
+        function AddOrder(customerId, employeeId, shipVia, freight, shipName, street, city, region, postalCode, country, productId, unitPrice, quantity, discount){
             fetch('https://northwind.vercel.app/api/orders',
             {
                 headers: {
@@ -74,7 +74,15 @@
                     city: city,
                     region: region,
                     postalCode: postalCode,
-                    country: country
+                    country: country,
+                    details: [
+                        {
+                           productId: productId,
+                            unitPrice : unitPrice,
+                            quantity: quantity,
+                            discount: discount
+                        }
+                    ]
                 })
             })
             .then(res => res.json())
