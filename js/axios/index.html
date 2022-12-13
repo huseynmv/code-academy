@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <script>
+
+
+        // axios
+
+        let instance = axios.create({
+            baseURL: 'https://northwind.vercel.app/api/',
+            timeout: 1000
+        });
+
+
+        function AddCustomerAxios(){
+
+            let new_customer = {
+                companyName : 'Ay balam company',
+                contactName : 'Huseyn Mammadov',
+                contactTitle : 'Show must go on ...',
+                address: {
+                    street: 'Huseyn Seyidzadeh',
+                    city: 'Baku',
+                    postalCode: 1014
+                }
+            }
+            instance.post(("customers"), new_customer)
+            .then(res => {console.log(res.data)})
+        }
+
+        function DeleteCustomerAxios(id){
+            
+            instance.delete(`customers/${id}`)
+            .then(res => {console.log(res)})
+
+        }
+
+        function UpdateCustomerAxios(id){
+            
+            let update_customer = {
+                companyName: 'Salam',
+                contactTitle: 'sagol'
+            }
+            instance.put(`customers/${id}`)
+            .then(res => {
+                console.log(res)
+            })
+
+
+        }
+
+        // Fetch
+
+
+
+        let baseURL =  'https://northwind.vercel.app/api/'
+
+        function AddCustomerFetch(){
+
+            let new_customer = {
+                companyName: 'Ay balam company',
+                contactName: 'Huseyn Mammadov',
+                contactTitle: 'Show must go on ...',
+                address: {
+                    street: 'Huseyn Seyidzadeh',
+                    city: 'Baku',
+                    postalCode: 1014
+                }
+            }
+
+            let requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(new_customer)
+            }
+
+            fetch( baseURL + 'customers', requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+
+        }
+
+        function DeleteCustomerFetch(id){
+
+            fetch(baseURL + `customers/${id}`,
+                {method: 'DELETE'}
+            )
+            .then(res => {console.log(res)})
+            
+
+        }
+
+
+        function UpdateCustomerFetch(id){
+
+            let update_customer = {
+                companyName: 'Salam',
+                contactTitle: 'sagol'
+            }
+
+            fetch(baseURL + `customers/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(update_customer)
+            })
+            .then(res => res.json())
+            .then(data => {console.log(data)})
+
+        }
+
+
+        function MostExpensiveProduct(){
+
+            instance.get('products')
+            .then(res => {
+
+                let sort_arr = res.data.sort(function(a,b){
+                    return b.unitPrice - a.unitPrice     
+                })
+                console.log(sort_arr[0]);
+
+            })
+
+        }
+
+
+        
+        function AvgStockPrice() {
+            total = 0
+            count = 0
+
+            instance.get('products')
+            .then(res => {
+                res.data.forEach(element => {
+                    total = total + element.unitsInStock
+                    count++
+                });
+                avgStock = total / count
+                console.log(avgStock)
+            })
+
+        }
+
+        function startWithC(){
+
+            instance.get('products')
+            .then(res => {
+                res.data.forEach(element => {
+                    if(element.name.startsWith('c')){
+                        console.log(element);
+                    }
+                })
+            })
+
+        }
+
+        function inLondon(){
+
+            instance.get('customers')
+            .then(res => {
+                // console.log(res.data)
+                res.data.forEach(elem => {
+                    if(elem.address?.city == 'London'){
+                        console.log(elem);
+                    }
+                })
+            })
+
+        }
+
+        function regionNull(){
+            count = 0
+
+            instance.get('customers')
+
+            .then(res => {
+                
+                res.data.forEach(elem => {
+                    if (elem.address.region == 'NULL'){
+                        count ++
+                    }
+                    
+                })
+                console.log(count);
+
+            })
+
+        }
+
+
+
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then(res => {
+            count = 0
+            res.data.forEach(elem => {
+                if(elem.userId == 1){
+                    count++
+                }
+            })
+            console.log(count);
+        })
+
+                axios.get('https://jsonplaceholder.typicode.com/albums')
+        .then(res => {
+            count = 0
+            res.data.forEach(elem => {
+                if(elem.userId == 1){
+                    count++
+                }
+            })
+            console.log(count);
+        })
+
+
+
+    </script>
+</body>
+</html>
